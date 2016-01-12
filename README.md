@@ -1,0 +1,2 @@
+# Rich
+Dlya Bogatyh
