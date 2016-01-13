@@ -18,19 +18,19 @@ public class CubeSlicer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (cubeReady && sliced){
-			//cubes resizing
+			//cubes resizing and shifting
 			prevScale = collidedCube.localScale.x;
 			distanceEndToCenter = collidedCube.position.x;
 			cutLength = prevScale / 2 + distanceEndToCenter;
 			collidedCube.localScale = new Vector3(cutLength, collidedCube.localScale.y, collidedCube.localScale.z);
+			collidedCube.Translate(Vector3.right * (prevScale - collidedCube.localScale.x) / 2);
+			//another cube
 			copyCube = Instantiate(collidedCube.parent.gameObject);
 			copyCube.GetComponent<BoxCollider>().enabled = false;
 			copyCube.transform.GetChild(0).localScale = new Vector3(prevScale - collidedCube.localScale.x, 
 			                                            collidedCube.localScale.y, collidedCube.localScale.z);
 			copyCube.GetComponent<CubeMove>().speed = particlesSpeed;
-			//translation
-			collidedCube.Translate(Vector3.right * (prevScale - collidedCube.localScale.x) / 2);
-			copyCube.transform.Translate(Vector3.left * (copyCube.transform.localScale.x / 2 + copyCube.transform.position.x));
+			copyCube.transform.GetChild(0).Translate(Vector3.left * (copyCube.transform.localScale.x / 2 + collidedCube.localScale.x / 2));
 			sliced = false;
 		}
 	}
