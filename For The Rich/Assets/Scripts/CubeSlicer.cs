@@ -45,6 +45,7 @@ public class CubeSlicer : MonoBehaviour {
 	public void OnTriggerEnter(Collider c){
 		collidedCube = c.transform.GetChild(0);
 		cubeReady = true;
+		sliced = false;
 		Debug.Log("ready");
 	}
 
