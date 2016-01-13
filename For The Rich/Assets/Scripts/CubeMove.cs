@@ -9,4 +9,8 @@ public class CubeMove : MonoBehaviour {
 	void Update () {
 		transform.Translate(Vector3.left * Time.deltaTime * speed);
 	}
+
+	public void SelfDestructor(){
+		Destroy(gameObject, 5f);
+	}
 }

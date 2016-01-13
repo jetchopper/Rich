@@ -30,7 +30,9 @@ public class CubeSlicer : MonoBehaviour {
 			copyCube.transform.GetChild(0).localScale = new Vector3(prevScale - collidedCube.localScale.x, 
 			                                            collidedCube.localScale.y, collidedCube.localScale.z);
 			copyCube.GetComponent<CubeMove>().speed = particlesSpeed;
-			copyCube.transform.GetChild(0).Translate(Vector3.left * (copyCube.transform.localScale.x / 2 + collidedCube.localScale.x / 2));
+			copyCube.GetComponent<CubeMove>().SelfDestructor();
+			copyCube.transform.GetChild(0).Translate(Vector3.left * (copyCube.transform.GetChild(0).localScale.x / 2
+			                                                         + collidedCube.localScale.x / 2));
 			sliced = false;
 		}
 	}
