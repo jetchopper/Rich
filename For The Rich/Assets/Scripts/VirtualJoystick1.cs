@@ -8,8 +8,7 @@ public class VirtualJoystick1 : MonoBehaviour, IDragHandler, IPointerUpHandler, 
 	public BladeRotate1 blade;
 	public Image top;
 	public float delta;
-
-	float percent;
+	
 	Image bottom;
 	Vector2 inputVector;
 

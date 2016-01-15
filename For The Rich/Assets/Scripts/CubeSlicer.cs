@@ -10,11 +10,6 @@ public class CubeSlicer : MonoBehaviour {
 	bool sliced, cubeReady;
 	float distanceEndToCenter, cutLength, prevScale;
 
-	// Use this for initialization
-	void Awake () {
-
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		if (cubeReady && sliced){
