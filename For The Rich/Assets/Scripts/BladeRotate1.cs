@@ -20,6 +20,12 @@ public class BladeRotate1 : MonoBehaviour {
 		if (isRotating){
 			transform.eulerAngles = new Vector3(0f, 0f, startAngle + delta * percent);
 		}
+		if (Input.GetKeyDown(KeyCode.RightArrow)){
+			StartRotate(80f);
+		}
+		if (Input.GetKeyUp(KeyCode.RightArrow)){
+			StartRotate(0f);
+		}
 	}
 
 	public void StartRotate(float x){
