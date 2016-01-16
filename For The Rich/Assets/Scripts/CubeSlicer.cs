@@ -58,6 +58,7 @@ public class CubeSlicer : MonoBehaviour {
 	public void OnTriggerExit(Collider c){
 		cubeReady = false;
 		if (c.GetComponent<CubeMove>() != null){
+			c.GetComponent<BoxCollider>().enabled = false;
 			c.GetComponent<CubeMove>().speed = particlesSpeed;
 			c.GetComponent<CubeMove>().SelfDestructor();
 		}

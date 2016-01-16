@@ -3,21 +3,21 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour {
 
-	public GameObject cube;
+	public GameObject[] cube;
 	public float spawnTime;
 
 	float timer;
 
 	// Use this for initialization
 	void Start () {
-		timer = 0f;
+		timer = spawnTime;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
 		if (timer > spawnTime){
-			Instantiate(cube);
+			Instantiate(cube[Random.Range(0, cube.Length)]);
 			timer = 0f;
 		}
 	}

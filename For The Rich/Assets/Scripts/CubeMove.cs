@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CubeMove : MonoBehaviour {
 	
-	public float speed;
+	public float speed, cost;
 
 	bool rotate;
 	Vector3 randomRot;
@@ -16,13 +17,13 @@ public class CubeMove : MonoBehaviour {
 			timer += Time.deltaTime;
 			transform.Rotate(randomRot);
 			if (timer > 18f){
-				Debug.Log("changing color");
 				transform.GetChild(0).GetComponent<Renderer>().material.color -= Color.black * 0.02f;
 			}
 		}
 	}
 
 	public void SelfDestructor(){
+		Score.SetScore(cost);
 		rotate = true;
 		timer = 0f;
 		randomRot = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));
