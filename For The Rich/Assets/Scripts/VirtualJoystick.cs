@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 
 public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler {
 
-	public BladeRotate blade;
+	public BladeRotate bladeL;
+	public BladeRotate1 bladeR;
 	public Image top;
 	public float delta;
 
@@ -30,7 +31,8 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 			top.rectTransform.anchoredPosition = new Vector2(inputVector.x * (bottom.rectTransform.sizeDelta.x / delta), inputVector.y);
 		}
 		if (top.rectTransform.anchoredPosition.x > 0){
-			blade.StartRotate(top.rectTransform.anchoredPosition.x);
+			bladeL.StartRotate(top.rectTransform.anchoredPosition.x);
+			bladeR.StartRotate(top.rectTransform.anchoredPosition.x);
 		}
 	}
 
@@ -43,6 +45,7 @@ public class VirtualJoystick : MonoBehaviour, IDragHandler, IPointerUpHandler, I
 		//resetting to center
 		inputVector = Vector2.zero;
 		top.rectTransform.anchoredPosition = Vector2.zero;
-		blade.StopRotate();
+		bladeL.StopRotate();
+		bladeR.StopRotate();
 	}
 }
