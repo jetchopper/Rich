@@ -22,8 +22,8 @@ public class CubeMove : MonoBehaviour {
 		}
 	}
 
-	public void SelfDestructor(){
-		Score.SetScore(cost);
+	public void SelfDestructor(int combo){
+		Score.SetScore(cost * combo);
 		rotate = true;
 		timer = 0f;
 		randomRot = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));

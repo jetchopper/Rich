@@ -4,20 +4,26 @@ using System.Collections;
 public class CubeSlicer : MonoBehaviour {
 
 	public float particlesSpeed;
-
+	public ParticleSystem starBurst;
+	
 	GameObject copyCube;
 	Transform collidedCube, copyChild;
 	bool sliced, cubeReady;
 	float cutLength, prevScale, initialSizeX;
+	int combo;
+
+	void Awake(){
+		combo = 1;
+	}
 
 	// Update is called once per frame
 	void Update () {
 		if (cubeReady && sliced){
-			Clicing();
+			Slicing();
 		}
 	}
 
-	void Clicing(){
+	void Slicing(){
 		//getting scale before cut & X cut from right
 		prevScale = collidedCube.localScale.x;
 		cutLength = prevScale / 2 + collidedCube.position.x;
@@ -29,7 +35,7 @@ public class CubeSlicer : MonoBehaviour {
 		copyCube = Instantiate(collidedCube.parent.gameObject);
 		copyCube.GetComponent<BoxCollider>().enabled = false;
 		copyCube.GetComponent<CubeMove>().speed = particlesSpeed;
-		copyCube.GetComponent<CubeMove>().SelfDestructor();
+		copyCube.GetComponent<CubeMove>().SelfDestructor(combo);
 		copyChild = copyCube.transform.GetChild(0);
 		//resizing created cube, shifting to the left, scaling and offsetting texture
 		copyChild.localScale = new Vector3(prevScale - collidedCube.localScale.x, 
@@ -38,13 +44,15 @@ public class CubeSlicer : MonoBehaviour {
 		                                    + collidedCube.localScale.x / 2));
 		copyChild.GetComponent<Renderer>().material.mainTextureScale = new Vector2(copyChild.localScale.x / initialSizeX, 1);
 		copyChild.GetComponent<Renderer>().material.mainTextureOffset = new Vector2(collidedCube.localScale.x / initialSizeX, 0f);
-		//slicing finished
+		//slicing finished & particles
+		combo++;
+		Instantiate(starBurst);
 		sliced = false;
 	}
 
 	public void Slice(){
 		sliced = true;
-		Debug.Log("sliced");
+		Debug.Log("sliced" + combo);
 	}
 
 	public void OnTriggerEnter(Collider c){
@@ -60,8 +68,9 @@ public class CubeSlicer : MonoBehaviour {
 		if (c.GetComponent<CubeMove>() != null){
 			c.GetComponent<BoxCollider>().enabled = false;
 			c.GetComponent<CubeMove>().speed = particlesSpeed;
-			c.GetComponent<CubeMove>().SelfDestructor();
+			c.GetComponent<CubeMove>().SelfDestructor(combo);
 		}
+		combo = 1;
 		Debug.Log("not ready");
 	}
 }
