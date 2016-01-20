@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class CubeMove : MonoBehaviour {
 	
@@ -24,6 +23,7 @@ public class CubeMove : MonoBehaviour {
 
 	public void SelfDestructor(int combo){
 		Score.SetScore(cost * combo);
+		Combo.setCombo(combo);
 		rotate = true;
 		timer = 0f;
 		randomRot = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));

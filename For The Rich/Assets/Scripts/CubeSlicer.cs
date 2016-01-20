@@ -52,7 +52,6 @@ public class CubeSlicer : MonoBehaviour {
 
 	public void Slice(){
 		sliced = true;
-		Debug.Log("sliced" + combo);
 	}
 
 	public void OnTriggerEnter(Collider c){
@@ -60,7 +59,6 @@ public class CubeSlicer : MonoBehaviour {
 		initialSizeX = collidedCube.localScale.x;
 		cubeReady = true;
 		sliced = false;
-		Debug.Log("ready");
 	}
 
 	public void OnTriggerExit(Collider c){
@@ -68,9 +66,8 @@ public class CubeSlicer : MonoBehaviour {
 		if (c.GetComponent<CubeMove>() != null){
 			c.GetComponent<BoxCollider>().enabled = false;
 			c.GetComponent<CubeMove>().speed = particlesSpeed;
-			c.GetComponent<CubeMove>().SelfDestructor(combo);
+			c.GetComponent<CubeMove>().SelfDestructor(1);
 		}
 		combo = 1;
-		Debug.Log("not ready");
 	}
 }
