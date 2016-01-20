@@ -29,4 +29,12 @@ public class CubeMove : MonoBehaviour {
 		randomRot = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));
 		Destroy(gameObject, 20f);
 	}
+
+	public void SelfDestructor(int combo, bool b){
+		Combo.setCombo(combo);
+		rotate = true;
+		timer = 0f;
+		randomRot = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));
+		Destroy(gameObject, 20f);
+	}
 }

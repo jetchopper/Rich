@@ -20,7 +20,7 @@ public class Combo : MonoBehaviour {
 		if (timer > 0.4f){
 			text.enabled = false;
 		}else{
-			rect.localScale += new Vector3(Time.deltaTime, Time.deltaTime);
+			rect.localScale += new Vector3(Time.deltaTime, Time.deltaTime) * 2;
 		}
 	}
 
