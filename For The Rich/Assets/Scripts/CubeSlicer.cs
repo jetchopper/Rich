@@ -66,7 +66,7 @@ public class CubeSlicer : MonoBehaviour {
 		if (c.GetComponent<CubeMove>() != null){
 			c.GetComponent<BoxCollider>().enabled = false;
 			c.GetComponent<CubeMove>().speed = particlesSpeed;
-			c.GetComponent<CubeMove>().SelfDestructorLast(1);
+			c.GetComponent<CubeMove>().SelfDestructorLast(combo);
 		}
 		combo = 1;
 	}

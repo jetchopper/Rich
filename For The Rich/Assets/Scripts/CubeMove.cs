@@ -31,8 +31,9 @@ public class CubeMove : MonoBehaviour {
 	}
 
 	public void SelfDestructorLast(int combo){
-		Combo.setCombo(combo);
-		Subscore.Clear();
+		if (combo > 1){
+			Subscore.Clear();
+		}
 		rotate = true;
 		timer = 0f;
 		randomRot = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));
