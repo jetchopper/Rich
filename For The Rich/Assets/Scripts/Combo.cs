@@ -20,6 +20,7 @@ public class Combo : MonoBehaviour {
 		if (timer > 0.4f){
 			text.enabled = false;
 		}else{
+			text.color -= Color.black * Time.deltaTime * 3; 
 			rect.localScale += new Vector3(Time.deltaTime, Time.deltaTime) * 2;
 		}
 	}
@@ -29,6 +30,7 @@ public class Combo : MonoBehaviour {
 			text.text = "X" + combo;
 			text.enabled = true;
 			rect.localScale = new Vector3(1f, 1f, 1f);
+			text.color = Color.white;
 			timer = 0f;
 		}
 	}
