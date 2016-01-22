@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour {
 	float timer;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		timer = spawnTime;
 	}
 	

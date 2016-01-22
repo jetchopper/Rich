@@ -27,10 +27,4 @@ public class BladeRotate : MonoBehaviour {
 		percent = x;
 		cutting.ReadyLeft(percent > cutPercent ? true : false);
 	}
-
-	public void StopRotate(){
-		isRotating = false;
-		cutting.ReadyLeft(false);
-		transform.eulerAngles = new Vector3(0f, 0f, startAngle);
-	}
 }

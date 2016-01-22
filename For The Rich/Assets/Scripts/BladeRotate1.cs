@@ -24,13 +24,7 @@ public class BladeRotate1 : MonoBehaviour {
 
 	public void StartRotate(float x){
 		isRotating = true;
-		percent = Mathf.Abs(x);
+		percent = x;
 		cutting.ReadyRight(percent > cutPercent ? true : false);
-	}
-
-	public void StopRotate(){
-		isRotating = false;
-		cutting.ReadyRight(false);
-		transform.eulerAngles = new Vector3(0f, 0f, startAngle);
 	}
 }
