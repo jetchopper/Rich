@@ -5,9 +5,9 @@ public class Toucher : MonoBehaviour  {
 
 	public BladeRotate bladeL;
 	public BladeRotate1 bladeR;
-	public float scissorsClosePercent, screenPercent;
+	public float scissorsClosePercent;
 
-	float gainedPercent;
+	float gainedPercent, screenPercent;
 
 	void Awake(){
 		gainedPercent = 0f;
