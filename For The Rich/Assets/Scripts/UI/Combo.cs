@@ -17,11 +17,11 @@ public class Combo : MonoBehaviour {
 
 	void Update(){
 		timer += Time.deltaTime;
-		if (timer > 0.4f){
+		if (timer > 1f){
 			text.enabled = false;
 		}else{
-			text.color -= Color.black * Time.deltaTime * 3; 
-			rect.localScale += new Vector3(Time.deltaTime, Time.deltaTime) * 2;
+			text.color -= Color.black * Time.deltaTime * 2f; 
+			rect.localScale += new Vector3(Time.deltaTime, Time.deltaTime) * 2f;
 		}
 	}
 

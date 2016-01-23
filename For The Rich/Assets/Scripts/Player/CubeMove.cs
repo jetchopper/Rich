@@ -26,7 +26,7 @@ public class CubeMove : MonoBehaviour {
 		Combo.setCombo(combo);
 		rotate = true;
 		timer = 0f;
-		randomRot = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));
+		randomRot = new Vector3(Random.Range(0f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));
 		Destroy(gameObject, 20f);
 	}
 
@@ -36,7 +36,7 @@ public class CubeMove : MonoBehaviour {
 		}
 		rotate = true;
 		timer = 0f;
-		randomRot = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));
+		randomRot = new Vector3(Random.Range(0f, 1f), Random.Range(-1f, 0f), Random.Range(-1f, 1f));
 		Destroy(gameObject, 20f);
 	}
 }

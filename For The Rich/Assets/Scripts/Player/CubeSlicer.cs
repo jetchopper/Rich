@@ -8,7 +8,7 @@ public class CubeSlicer : MonoBehaviour {
 	
 	GameObject copyCube;
 	Transform collidedCube, copyChild;
-	bool sliced, cubeReady;
+	bool sliced, cubeReady, coinReady;
 	float cutLength, prevScale, initialSizeX;
 	int combo;
 
@@ -20,6 +20,9 @@ public class CubeSlicer : MonoBehaviour {
 	void Update () {
 		if (cubeReady && sliced){
 			Slicing();
+		}
+		if (coinReady && sliced){
+			CoinSlicing();
 		}
 	}
 
@@ -50,24 +53,43 @@ public class CubeSlicer : MonoBehaviour {
 		sliced = false;
 	}
 
+	void CoinSlicing(){
+		Debug.Log("coin!");
+		sliced = false;
+	}
+
 	public void Slice(){
 		sliced = true;
 	}
 
 	public void OnTriggerEnter(Collider c){
-		collidedCube = c.transform.GetChild(0);
-		initialSizeX = collidedCube.localScale.x;
-		cubeReady = true;
-		sliced = false;
+		if (c.CompareTag("Bill")){
+			collidedCube = c.transform.GetChild(0);
+			initialSizeX = collidedCube.localScale.x;
+			cubeReady = true;
+			sliced = false;
+		}
+		if (c.CompareTag("Coin")){
+			c.GetComponent<CircleRotator>().enabled = false;
+			coinReady = true;
+			cubeReady = false;
+			sliced = false;
+		}
 	}
 
 	public void OnTriggerExit(Collider c){
-		cubeReady = false;
-		if (c.GetComponent<CubeMove>() != null){
-			c.GetComponent<BoxCollider>().enabled = false;
-			c.GetComponent<CubeMove>().speed = particlesSpeed;
-			c.GetComponent<CubeMove>().SelfDestructorLast(combo);
+		if (c.CompareTag("Bill")){
+			cubeReady = false;
+			if (c.GetComponent<CubeMove>() != null){
+				c.GetComponent<BoxCollider>().enabled = false;
+				c.GetComponent<CubeMove>().speed = particlesSpeed;
+				c.GetComponent<CubeMove>().SelfDestructorLast(combo);
+			}
+			combo = 1;
 		}
-		combo = 1;
+		if (c.CompareTag("Coin")){
+			cubeReady = cubeReady ? true : false;
+			coinReady = false;
+		}
 	}
 }

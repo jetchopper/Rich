@@ -11,13 +11,13 @@ public class Toucher : MonoBehaviour  {
 
 	void Awake(){
 		gainedPercent = 0f;
-		screenPercent = Screen.width / 100;
+		screenPercent = Screen.height / 100;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved){
-			gainedPercent += Input.GetTouch(0).deltaPosition.x / screenPercent * 100;
+			gainedPercent += Input.GetTouch(0).deltaPosition.y / screenPercent * 100;
 			if (gainedPercent > scissorsClosePercent){
 				gainedPercent = scissorsClosePercent;
 			}
