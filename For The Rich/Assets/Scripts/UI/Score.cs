@@ -14,7 +14,7 @@ public class Score : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		text = GetComponent<Text>();
-		text.text = "";
+		text.text = PlayerPrefs.GetString("score");
 		effectTimer = 0;
 		rect = GetComponent<RectTransform>();
 		initScale = rect.localScale;
@@ -42,6 +42,7 @@ public class Score : MonoBehaviour {
 			text.text = "0";
 		}
 		text.text = "" + (int.Parse(text.text) + (cost));
+		PlayerPrefs.SetString("score", text.text);
 		scoreSet = true;
 	}
 }
