@@ -6,6 +6,7 @@ public class Toucher : MonoBehaviour  {
 	public BladeRotate bladeL;
 	public BladeRotate1 bladeR;
 	public float scissorsClosePercent;
+	public FadeToBlack fade;
 
 	float gainedPercent, screenPercent;
 
@@ -34,6 +35,9 @@ public class Toucher : MonoBehaviour  {
 			}
 			bladeL.StartRotate(gainedPercent);
 			bladeR.StartRotate(gainedPercent);
+		}
+		if (Input.GetKeyDown(KeyCode.Escape)){
+			fade.Fade(0); 
 		}
 	}
 }

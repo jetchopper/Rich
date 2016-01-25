@@ -4,9 +4,12 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
+	public bool sandbox;
+
 	static Text text;
 	static float effectTimer;
 	static bool scoreSet;
+	static string sandOrTimer;
 
 	RectTransform rect;
 	Vector3 initScale;
@@ -14,10 +17,11 @@ public class Score : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
 		text = GetComponent<Text>();
-		text.text = PlayerPrefs.GetString("score");
+		text.text = sandbox ? PlayerPrefs.GetString("score") : "";
 		effectTimer = 0;
 		rect = GetComponent<RectTransform>();
 		initScale = rect.localScale;
+		sandOrTimer = sandbox ? "score" : "empty";
 	}
 
 	void Update(){
@@ -42,7 +46,7 @@ public class Score : MonoBehaviour {
 			text.text = "0";
 		}
 		text.text = "" + (int.Parse(text.text) + (cost));
-		PlayerPrefs.SetString("score", text.text);
+		PlayerPrefs.SetString(sandOrTimer, text.text);
 		scoreSet = true;
 	}
 }
