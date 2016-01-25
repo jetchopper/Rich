@@ -4,7 +4,7 @@ using System.Collections;
 public class UIScaler : MonoBehaviour {
 
 	public float scaleSpeed, offset, timeBetween;
-
+	
 	float effectTimer;
 	RectTransform rect;
 	Vector3 initScale;

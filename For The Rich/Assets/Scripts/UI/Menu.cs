@@ -5,9 +5,12 @@ public class Menu : MonoBehaviour {
 
 	public FadeToBlack fade;
 
-	/*void Awake(){
-		PlayerPrefs.DeleteAll();
-	}*/
+	AudioSource clickSound;
+
+	void Awake(){
+		//PlayerPrefs.DeleteAll();
+		clickSound = GetComponent<AudioSource>();
+	}
 
 	void Update(){
 		if (Input.GetKeyDown(KeyCode.Escape)) 
@@ -15,10 +18,12 @@ public class Menu : MonoBehaviour {
 	}
 
 	public void LoadSandboxLevel(){
+		clickSound.Play();
 		fade.Fade(1);
 	}
 
 	public void LoadTimeLevel(){
+		clickSound.Play();
 		fade.Fade(2);
 	}
 }

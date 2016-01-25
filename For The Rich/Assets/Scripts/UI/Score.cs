@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
+	public GameObject cheererObj;
+
 	public bool sandbox;
 
 	static Text text;
@@ -48,5 +50,8 @@ public class Score : MonoBehaviour {
 		text.text = "" + (int.Parse(text.text) + (cost));
 		PlayerPrefs.SetString(sandOrTimer, text.text);
 		scoreSet = true;
+		if (sandOrTimer.Equals("score")){
+			Cheerer.SetCheerer(int.Parse(text.text));
+		}
 	}
 }

@@ -19,13 +19,13 @@ public class ReadyCountdown : MonoBehaviour {
 	void Update () {
 		timer += Time.deltaTime;
 		if ((int) timer == 1){
-			text.text = "3";
+			text.text = "III";
 		}
 		if ((int) timer == 2){
-			text.text = "2";
+			text.text = "II";
 		}
 		if ((int) timer == 3){
-			text.text = "1";
+			text.text = "I";
 		}
 		if ((int) timer == 4){
 			if (stopwatch != null){

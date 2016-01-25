@@ -5,6 +5,7 @@ public class CubeSlicer : MonoBehaviour {
 
 	public float particlesSpeed;
 	public ParticleSystem starBurst;
+	public AudioSource chik, paperCut;
 	
 	GameObject copyCube;
 	Transform collidedCube, copyChild;
@@ -20,6 +21,7 @@ public class CubeSlicer : MonoBehaviour {
 	void Update () {
 		if (cubeReady && sliced){
 			Slicing();
+			paperCut.Play();
 		}
 	}
 
@@ -52,6 +54,7 @@ public class CubeSlicer : MonoBehaviour {
 
 	public void Slice(){
 		sliced = true;
+		chik.Play();
 	}
 
 	public void OnTriggerEnter(Collider c){

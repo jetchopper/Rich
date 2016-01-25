@@ -4,12 +4,15 @@ using UnityEngine.UI;
 
 public class Subscore : MonoBehaviour {
 
+	AudioSource coinsBag;
+
 	static Text text;
 	static bool shift;
 	static float score;
 	
 	// Use this for initialization
 	void Awake () {
+		coinsBag = GetComponent<AudioSource>();
 		text = GetComponent<Text>();
 		text.text = "";
 	}
@@ -20,6 +23,7 @@ public class Subscore : MonoBehaviour {
 		}
 		if (text.lineSpacing < 0){
 			Score.SetScore(score);
+			coinsBag.Play();
 			score = 0f;
 			text.text = "";
 			text.lineSpacing = 1f;

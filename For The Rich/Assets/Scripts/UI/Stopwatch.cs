@@ -9,12 +9,14 @@ public class Stopwatch : MonoBehaviour {
 	public Text score;
 	public FadeToBlack fade;
 
+	AudioSource ding;
 	Text text;
 	float timer;
 	bool start;
 
 	// Use this for initialization
 	void Awake () {
+		ding = GetComponent<AudioSource>();
 		text = GetComponent<Text>();
 		text.text = "" + initTime;
 		timer = 0f;
@@ -44,5 +46,6 @@ public class Stopwatch : MonoBehaviour {
 
 	public void StartCountdown(){
 		start = true;
+		ding.Play();
 	}
 }
