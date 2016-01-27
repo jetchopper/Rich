@@ -32,6 +32,7 @@ public class FadeToBlack : MonoBehaviour {
 					Application.Quit();
 				}else{
 					close = false;
+					Destroy(GameObject.FindGameObjectWithTag("Respawn"));
 					Application.LoadLevel(nextLevel);
 				}
 			}
