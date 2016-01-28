@@ -32,7 +32,9 @@ public class FadeToBlack : MonoBehaviour {
 					Application.Quit();
 				}else{
 					close = false;
-					Destroy(GameObject.FindGameObjectWithTag("Respawn"));
+					if (nextLevel == 0){
+						Destroy(GameObject.FindGameObjectWithTag("MainTheme"));
+					}
 					Application.LoadLevel(nextLevel);
 				}
 			}
